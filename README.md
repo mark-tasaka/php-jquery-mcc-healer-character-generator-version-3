@@ -5,6 +5,12 @@ Designed with PHP and jQuery, the Mutant Crawl Classics Healer Character Generat
 ----------------------
 
 
+
+Update 1.01: 2021-01-06
+
+Updates to mccHealer.php, healer.css, hitPoints.js, classDetails.php and weapons.php.
+
+
 Initial commit: 2021-01-05
 
 The initial commit for the Mutant Crawl Classics Healer Character Generator Version 3.
