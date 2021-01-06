@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mutant Crawl Classics Sentinel Character Generator Version 3</title>
+<title>Mutant Crawl Classics Healer Character Generator Version 3</title>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 	<meta charset="UTF-8">
-	<meta name="description" content="Mutant Crawl Classics sentinel Character Generator. Goblinoid Games.">
+	<meta name="description" content="Mutant Crawl Classics Healer Character Generator. Goblinoid Games.">
 	<meta name="keywords" content="Mutant Crawl Classics, Goblinoid Games,HTML5,CSS,JavaScript">
-	<meta name="author" content="Mark Tasaka 2020">
+	<meta name="author" content="Mark Tasaka 2021">
     
     <link rel="icon" href="../../../images/favicon/favicon.png" type="image/png" sizes="16x16"> 
 		
 
-	<link rel="stylesheet" type="text/css" href="css/sentinel.css">
+	<link rel="stylesheet" type="text/css" href="css/healer.css">
     
     
     <script type="text/javascript" src="./js/modifiers.js"></script>
     <script type="text/javascript" src="./js/hitPoinst.js"></script>
-    <script type="text/javascript" src="./js/abilityScoreAddition.js"></script>
     <script type="text/javascript" src="./js/luckySign.js"></script>
     <script type="text/javascript" src="./js/adjustments.js"></script>
     <script type="text/javascript" src="./js/languages.js"></script>
@@ -168,14 +167,14 @@
         {
             rsort($abilityScoreArray);
 
-            $strengthBase = $abilityScoreArray[0];
-            $agility = $abilityScoreArray[2];
-            $stamina = $abilityScoreArray[1];
-            $personality = $abilityScoreArray[4];
-            $intelligence = $abilityScoreArray[5];
-            $luck = $abilityScoreArray[3];
+            $strengthBase = $abilityScoreArray[3];
+            $agility = $abilityScoreArray[5];
+            $stamina = $abilityScoreArray[4];
+            $personality = $abilityScoreArray[0];
+            $intelligence = $abilityScoreArray[1];
+            $luck = $abilityScoreArray[2];
 
-            $optimizeAbilityScoreMessage = "Ability Scores optimized in the order of Str, Sta, Agi, Luck, Per, Int.";
+            $optimizeAbilityScoreMessage = "Ability Scores optimized in the order of Per, Int, Luck, Str, Sta, Agi.";
         }
         else
         {
@@ -337,10 +336,12 @@
 
     $artifactCheckBonusPlusInt = $artifactCheckBonus + $intelligenceMod;
 
-    $artifactCheckBonusDie = getArtifactCheckBonusDie($level);
+    $naturalHealingPerDay = getNaturalHealingPerDay($level);
 
 
     $profession = getProfession();
+
+    $attackBonus = getAttackBonus($level);
 
     
     
@@ -402,9 +403,9 @@
        </span>
 
        
-       <span id="artifactCheckBonusDie">
+       <span id="naturalHealingPerDay">
            <?php
-                echo $artifactCheckBonusDie;
+                echo $naturalHealingPerDay;
            ?>
         </span>
 
@@ -412,7 +413,7 @@
         <span id="maxTech"></span>
 
        
-       <span id="class">Sentinel</span>
+       <span id="class">Healer</span>
        
        <span id="armourClass"></span>
 
@@ -682,7 +683,7 @@
 
 	  
 	/*
-	 Character() - sentinel Character Constructor
+	 Character() - healer Character Constructor
 	*/
 	function Character() {
         
@@ -706,7 +707,7 @@
         let bonusLanguages = fnAddLanguages(intelligenceMod, birthAugur, luckMod);
 	    let baseAC = getBaseArmourClass(agilityMod) + adjustAC(birthAugur, luckMod);
 
-		let sentinelCharacter = {
+		let healerCharacter = {
 			"strength": strength,
 			"agility": agility,
 			"stamina": stamina,
@@ -726,8 +727,8 @@
             "addLanguages": "Nu-Speak" + bonusLanguages,
             "armourClass": <?php echo $totalAcDefense ?> + baseAC,
             "hp": getHitPoints (level, staminaMod) + hitPointAdjustPerLevel(birthAugur,  luckMod),
-			"melee": strengthMod + <?php echo $level ?> + meleeAdjust(birthAugur, luckMod),
-			"range": agilityMod +  <?php echo $level ?> + rangeAdjust(birthAugur, luckMod),
+			"melee": strengthMod + <?php echo $attackBonus ?> + meleeAdjust(birthAugur, luckMod),
+			"range": agilityMod +  <?php echo $attackBonus ?> + rangeAdjust(birthAugur, luckMod),
 			"meleeDamage": strengthMod + adjustMeleeDamage(birthAugur, luckMod),
             "rangeDamage": adjustRangeDamage(birthAugur, luckMod),
             "techLevel": maxTechLevel,
@@ -737,17 +738,17 @@
             "initiative": agilityMod + adjustInit(birthAugur, luckMod)
 
 		};
-	    if(sentinelCharacter.hitPoints <= 0 ){
-			sentinelCharacter.hitPoints = 1;
+	    if(healerCharacter.hitPoints <= 0 ){
+			healerCharacter.hitPoints = 1;
 		}
-		return sentinelCharacter;
+		return healerCharacter;
 	  
 	  }
 	  
 
 
   
-       let imgData = "images/sentinel.png";
+       let imgData = "images/healer.png";
       
         $("#character_sheet").attr("src", imgData);
       

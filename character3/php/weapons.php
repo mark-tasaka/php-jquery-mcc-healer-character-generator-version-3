@@ -49,7 +49,7 @@ function getRandomWeapons()
     //shuffle $weaponsArray
     shuffle($weaponsArray); 
 
-    $numberOfWeapons = rand (2, 8);
+    $numberOfWeapons = rand (2, 6);
 
     for($j = 0; $j < $numberOfWeapons; ++$j)
     {
