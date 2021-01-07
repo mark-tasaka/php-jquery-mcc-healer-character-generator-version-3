@@ -382,9 +382,6 @@
        </span>
        
        
-       <span id="dieRollMethod"></span>
-
-       
        <span id="artifactCheck">
            <?php
                 if($artifactCheckBonusPlusInt == 0)
@@ -783,8 +780,6 @@
       $("#luckMod").html(data.luckModifer);
       
       
-      
-      $("#dieRollMethod").html(data.dieRollMethod);
             
       $("#hitPoints").html(data.hp);
       
