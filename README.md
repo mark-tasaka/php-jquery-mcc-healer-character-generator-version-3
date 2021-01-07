@@ -6,6 +6,11 @@ Designed with PHP and jQuery, the Mutant Crawl Classics Healer Character Generat
 
 
 
+Update 1.02: 2021-01-07
+
+Updates to mccHealer.php and healer.css.
+
+
 Update 1.01: 2021-01-06
 
 Updates to mccHealer.php, healer.css, hitPoints.js, classDetails.php and weapons.php.
