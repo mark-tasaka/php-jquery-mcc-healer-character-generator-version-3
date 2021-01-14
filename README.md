@@ -5,6 +5,18 @@ Designed with PHP and jQuery, the Mutant Crawl Classics Healer Character Generat
 ----------------------
 
 
+Live version of the Mutant Crawl Classics (MCC) Healer Character Generator Version 3 is found at:
+
+Artifacts of the Ancient Ones: A Mutant Crawl Classics Fan Site
+
+https://www.oldschooladventures.org/mcc/classes/healer/
+
+-----------------
+
+
+Update 1.03: 2021-01-14
+
+MCC Healer Generator Launch Page added.
 
 Update 1.02: 2021-01-07
 
